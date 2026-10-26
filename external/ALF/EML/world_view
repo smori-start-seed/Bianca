@@ -1,0 +1,33 @@
+# EML/world_view.py
+#
+# Liest den relevanten Zustand aus der Colorverse-Engine (saturings.py).
+
+def read_world(engine):
+    sphere = engine.spheren[0] if engine.spheren else None
+    meta = engine.metasphere if hasattr(engine, "metasphere") else None
+    uni = engine.universe if hasattr(engine, "universe") else None
+
+    return {
+        "sphere": {
+            "hue": getattr(sphere, "hue_avg", None) if sphere else None,
+            "sat": getattr(sphere, "sat_avg", None) if sphere else None,
+            "bri": getattr(sphere, "bri_avg", None) if sphere else None,
+            "energy": getattr(sphere, "energy_avg", None) if sphere else None,
+            "harmonie": getattr(sphere, "harmonie_avg", None) if sphere else None,
+            "drift": getattr(sphere, "drift_avg", None) if sphere else None,
+        },
+        "meta": {
+            "hue": getattr(meta, "hue_avg", None) if meta else None,
+            "sat": getattr(meta, "sat_avg", None) if meta else None,
+            "bri": getattr(meta, "bri_avg", None) if meta else None,
+            "energy": getattr(meta, "energy_avg", None) if meta else None,
+            "harmonie": getattr(meta, "harmonie_avg", None) if meta else None,
+            "drift": getattr(meta, "drift_avg", None) if meta else None,
+        },
+        "universe": {
+            "harmonie": getattr(uni, "harmonie", None) if uni else None,
+            "drift": getattr(uni, "drift", None) if uni else None,
+            "energy": getattr(uni, "energy", None) if uni else None,
+        }
+    }
+
