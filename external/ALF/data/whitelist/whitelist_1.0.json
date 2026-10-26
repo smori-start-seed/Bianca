@@ -1,0 +1,238 @@
+{
+  "version": "1.0",
+  "created_at": "2024-09-13T00:00:00Z",
+  "signature": "ALF_INITIAL_WHITELIST",
+  "algorithm": "SHA-256",
+  "entries": [
+    {
+      "file_path": "__init__.py",
+      "sha256_hash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "file_size": 0,
+      "added_in_version": "1.0",
+      "last_modified": "2024-09-13",
+      "description": "Core module: __init__.py",
+      "is_critical": true
+    },
+    {
+      "file_path": "alf_bridge.py",
+      "sha256_hash": "c1898d8c9b0df20014bf283d07172a465f0784cecb9bfd7a0a491ccc40dcd486",
+      "file_size": 5082,
+      "added_in_version": "1.0",
+      "last_modified": "2024-09-13",
+      "description": "Core module: alf_bridge.py",
+      "is_critical": false
+    },
+    {
+      "file_path": "alf_bridge2.py",
+      "sha256_hash": "e7f1956d3153a5ef08f4d6b07829bd7926cc2be25154468d556440f958a19fb8",
+      "file_size": 1152,
+      "added_in_version": "1.0",
+      "last_modified": "2024-09-13",
+      "description": "Core module: alf_bridge2.py",
+      "is_critical": false
+    },
+    {
+      "file_path": "backends.py",
+      "sha256_hash": "5228e0fbcdf2525f70866d3f6f1dfc09c0df11f000c7511a1db89c4da67ce513",
+      "file_size": 13131,
+      "added_in_version": "1.0",
+      "last_modified": "2024-09-13",
+      "description": "Core module: backends.py",
+      "is_critical": false
+    },
+    {
+      "file_path": "erfahrung.py",
+      "sha256_hash": "4d21b61f42a5b03aeafa9fefdd2f7d2d73f863e7e00508be962501077c490283",
+      "file_size": 5272,
+      "added_in_version": "1.0",
+      "last_modified": "2024-09-13",
+      "description": "Core module: erfahrung.py",
+      "is_critical": true
+    },
+    {
+      "file_path": "frequency.py",
+      "sha256_hash": "f6c7a11ac4d80f546994dd7b19bfd9ee8b523d9b841d5ff5ffefd0f9c9cb362d",
+      "file_size": 683,
+      "added_in_version": "1.0",
+      "last_modified": "2024-09-13",
+      "description": "Core module: frequency.py",
+      "is_critical": false
+    },
+    {
+      "file_path": "identity.py",
+      "sha256_hash": "2ed86e2491a524090c5efd130caf57f0a768e46cc29660620fc53aa7405ce6a3",
+      "file_size": 865,
+      "added_in_version": "1.0",
+      "last_modified": "2024-09-13",
+      "description": "Core module: identity.py",
+      "is_critical": true
+    },
+    {
+      "file_path": "ininity.py",
+      "sha256_hash": "bdf950f3283155121e47663a60fd30832de90fda8e534ba18748ac5622f8681c",
+      "file_size": 681,
+      "added_in_version": "1.0",
+      "last_modified": "2024-09-13",
+      "description": "Core module: ininity.py",
+      "is_critical": false
+    },
+    {
+      "file_path": "interpretation.py",
+      "sha256_hash": "704a09fcac67d9c9a7ef632487b9d3ce71eb682728c4be457f3742f8dbf115cc",
+      "file_size": 761,
+      "added_in_version": "1.0",
+      "last_modified": "2024-09-13",
+      "description": "Core module: interpretation.py",
+      "is_critical": false
+    },
+    {
+      "file_path": "llm_bridge.py",
+      "sha256_hash": "b5a386eaabb5c8677423c07c4a083e4eb1e214aef576f69eaba3e417046d9f56",
+      "file_size": 15625,
+      "added_in_version": "1.0",
+      "last_modified": "2024-09-13",
+      "description": "Core module: llm_bridge.py",
+      "is_critical": false
+    },
+    {
+      "file_path": "mandate.py",
+      "sha256_hash": "b6120f42871ed4f37c5b40718794081b604fc3a4eb3c496bf54130a40bad45fd",
+      "file_size": 883,
+      "added_in_version": "1.0",
+      "last_modified": "2024-09-13",
+      "description": "Core module: mandate.py",
+      "is_critical": true
+    },
+    {
+      "file_path": "profile.py",
+      "sha256_hash": "eb28fad9e13915870599723e2671108b4ac4aea16c31ef063a4ea22593344a3b",
+      "file_size": 692,
+      "added_in_version": "1.0",
+      "last_modified": "2024-09-13",
+      "description": "Core module: profile.py",
+      "is_critical": false
+    },
+    {
+      "file_path": "rueckmeldung.py",
+      "sha256_hash": "2be05b81b02f0715bf206812a53841d66e26ac0fc5fe8431dc583614134ef211",
+      "file_size": 5553,
+      "added_in_version": "1.0",
+      "last_modified": "2024-09-13",
+      "description": "Core module: rueckmeldung.py",
+      "is_critical": true
+    },
+    {
+      "file_path": "screensaver/__init__.py",
+      "sha256_hash": "b18e8f67287fae8ef9d1f12e7456fe36e90307a2e72a62d7c79afe527dc51e65",
+      "file_size": 537,
+      "added_in_version": "1.0",
+      "last_modified": "2024-09-13",
+      "description": "Core module: screensaver/__init__.py",
+      "is_critical": false
+    },
+    {
+      "file_path": "screensaver/screensaver.py",
+      "sha256_hash": "f8a5eff2fe0f5ce890f4b9f7aca4d772d6c5440c7263c565336bba14a3c052dc",
+      "file_size": 17734,
+      "added_in_version": "1.0",
+      "last_modified": "2024-09-13",
+      "description": "Core module: screensaver/screensaver.py",
+      "is_critical": false
+    },
+    {
+      "file_path": "seed.py",
+      "sha256_hash": "ecfcaa471ae59df5e24bdff17e980a6c0f221de18d00d0f1e75e24d3cf575f76",
+      "file_size": 5843,
+      "added_in_version": "1.0",
+      "last_modified": "2024-09-13",
+      "description": "Core module: seed.py",
+      "is_critical": true
+    },
+    {
+      "file_path": "session_manager.py",
+      "sha256_hash": "7eced4762764ede9648a59e4fe1895835daa78a980de3cae827e20b9c07d13cc",
+      "file_size": 236,
+      "added_in_version": "1.0",
+      "last_modified": "2024-09-13",
+      "description": "Core module: session_manager.py",
+      "is_critical": false
+    },
+    {
+      "file_path": "silky_edge.py",
+      "sha256_hash": "a379fa61e9cb560bf2a13813501e8bc0df290172aea9d073ef5447cedf2d0bb9",
+      "file_size": 465,
+      "added_in_version": "1.0",
+      "last_modified": "2024-09-13",
+      "description": "Core module: silky_edge.py",
+      "is_critical": false
+    },
+    {
+      "file_path": "simulation.py",
+      "sha256_hash": "6c5c3cf60df70ed6fe5233376bbd5d4aa9411823bd8b76c2bae49830ea9cf876",
+      "file_size": 606,
+      "added_in_version": "1.0",
+      "last_modified": "2024-09-13",
+      "description": "Core module: simulation.py",
+      "is_critical": false
+    },
+    {
+      "file_path": "trend.py",
+      "sha256_hash": "5e8778e3e9bfce69dea0f7ac89a7fd7d28065e7c66a8f38f72a2f7c53289f494",
+      "file_size": 502,
+      "added_in_version": "1.0",
+      "last_modified": "2024-09-13",
+      "description": "Core module: trend.py",
+      "is_critical": false
+    },
+    {
+      "file_path": "werte_teilen.py",
+      "sha256_hash": "546bd35d93ac273e2d232c1a3df0e9b464db762d79e02362c0fc78af55155ad4",
+      "file_size": 14972,
+      "added_in_version": "1.0",
+      "last_modified": "2024-09-13",
+      "description": "Core module: werte_teilen.py",
+      "is_critical": false
+    },
+    {
+      "file_path": "whitelist/__init__.py",
+      "sha256_hash": "80e3c5fd7da92564220038205245c0991307922c5dc9c225f945c8bc8b9e253d",
+      "file_size": 1386,
+      "added_in_version": "1.0",
+      "last_modified": "2024-09-13",
+      "description": "Core module: whitelist/__init__.py",
+      "is_critical": false
+    },
+    {
+      "file_path": "whitelist/voting.py",
+      "sha256_hash": "cd16021cdd1f0b950464c44108981423df42d73a57c6c90ebd6423092c02c46c",
+      "file_size": 34247,
+      "added_in_version": "1.0",
+      "last_modified": "2024-09-13",
+      "description": "Core module: whitelist/voting.py",
+      "is_critical": true
+    },
+    {
+      "file_path": "whitelist/whitelist.py",
+      "sha256_hash": "1c83e51242b8cbf5d806e8085d329194b83c258e2d1d3d12419c647863cfb4cd",
+      "file_size": 19913,
+      "added_in_version": "1.0",
+      "last_modified": "2024-09-13",
+      "description": "Core module: whitelist/whitelist.py",
+      "is_critical": true
+    },
+    {
+      "file_path": "zyklus.py",
+      "sha256_hash": "b0cc1ecd0eb1dc0376258102244cbe913c3eded5623034f40495cb3e3d578bf5",
+      "file_size": 1585,
+      "added_in_version": "1.0",
+      "last_modified": "2024-09-13",
+      "description": "Core module: zyklus.py",
+      "is_critical": true
+    }
+  ],
+  "metadata": {
+    "total_files": 25,
+    "description": "Initial whitelist for ALF core modules",
+    "maintainer": "smori-start-seed"
+  }
+}
