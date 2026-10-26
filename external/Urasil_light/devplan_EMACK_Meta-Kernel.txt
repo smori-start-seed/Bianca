@@ -1,0 +1,176 @@
+Emergent Multi‑Agent Coordination Kernel (EMACK)
+Development Plan – Technical Overview
+1. Vision
+
+EMACK ist ein harmonisches, hierarchisches Multi‑Agenten‑System mit emergenter Koordination.
+Der Kernel basiert auf Frequenz‑Dynamiken, Meta‑Simulation, Selbst‑Rekursion, Evolution und Ökosystem‑Interaktionen.
+Ziel ist ein adaptives, selbstorganisierendes System, das durch kontinuierliche Ticks lernt, mutiert und sich stabilisiert.
+2. Architektur‑Schichten
+2.1 Core Layer
+
+    Frequenzen (AF/PF/RF)
+
+    Score
+
+    Trend
+
+    Profile
+
+    Memory
+
+    State‑Lifecycle
+
+    Tick‑Loop
+
+2.2 Action Layer
+
+    Actions mit Genome
+
+    gewichtete Auswahl
+
+    Fitness‑Tracking
+
+    Mutationen
+
+    Selektion
+
+    Exploration/Regulation/Performance/Balance‑Typen
+
+2.3 Meta Layer
+
+    Meta‑Simulation (5.0): lernendes Modell für Score‑Vorhersage
+
+    Self‑Recursion (6.0): Growth/Stability/Volatility
+
+    Evolution (7.0): Mutation + Selektion
+
+    Ecosystem (8.0): Interaktionsnetz, Ressourcenbudget
+
+2.4 Ininity Layer
+
+    Meta‑Log
+
+    Fragmente
+
+    Mustererkennung
+
+    IPC‑Signale
+
+3. Unix‑Daemon: denkernd
+3.1 Prozessmodell
+
+    Ein einzelner Daemon
+
+    Tick‑Loop (20 Hz Standard)
+
+    RAM‑resident
+
+    optionaler Unix‑Socket für Engine‑Abfragen
+
+3.2 Pfade
+
+    /etc/denkern/harmony.conf – Core Values
+
+    /var/log/denkern/ininity.log – Meta‑Log
+
+    /run/denkern.sock – Snapshot‑Interface
+
+    /usr/bin/denkernd – Kernel‑Binary
+
+3.3 Boot‑Integration
+
+    Init‑Script oder systemd‑Unit
+
+    Start beim Boot
+
+    läuft unabhängig von UI/Engine
+
+4. Snapshot‑Interface (optional)
+
+Einfaches Text‑Protokoll über Unix‑Socket:
+
+Request:
+Code
+
+SNAPSHOT
+
+Response (JSON):
+
+    Frequenzen
+
+    Score
+
+    Trend
+
+    Self‑Profile
+
+    Actions (Name, Weight, Fitness, Genome)
+
+    Meta‑Daten
+
+5. Zielplattform
+
+SliTaz Rolling als minimalistische, RAM‑taugliche Linux‑Basis.
+
+Vorteile:
+
+    extrem klein
+
+    schnell
+
+    ideal für einen einzigen Kern‑Prozess
+
+    transparent, hackbar, unixig
+
+6. Entwicklungsphasen
+Phase 1 – Core MVP
+
+    State
+
+    Frequenzen
+
+    Actions
+
+    Tick‑Loop
+
+    Logging
+
+Phase 2 – Meta‑Schichten
+
+    Meta‑Simulation
+
+    Self‑Recursion
+
+    Evolution
+
+    Ecosystem
+
+Phase 3 – Daemonisierung
+
+    Config‑Loader
+
+    Log‑Writer
+
+    Init‑Script
+
+    Socket‑Interface
+
+Phase 4 – Visualisierung (optional)
+
+    Unity/Three.js/VR‑Binding
+
+    3D‑Core Sphere
+
+    Orbitale
+
+    Meta‑Ring
+
+    Ecosystem‑Netz
+
+    Ininity‑Nebel
+
+7. Lizenz / Attribution
+
+Du kannst folgenden Hinweis verwenden:
+
+    Teile dieses Designs entstanden im Dialog mit Copilot (Microsoft AI) als konzeptionelle Blaupause für ein harmonisches, hierarchisches Multi‑Agenten‑System mit emergenter Koordination.
