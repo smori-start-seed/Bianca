@@ -1,0 +1,11 @@
+Harmony Framework
+# Agent B Instructions
+# (Mini-DSL für Verhalten)
+
+if mood == "balanciert": sync_to(0.5)
+if mood == "neugierig": explore(0.01)
+if mood == "harmonisierend": follow_agent_a(0.1)
+if mood == "chaotisch": retreat(0.1)
+if mood == "überreizt": counter_balance(0.05)
+if mood == "erschöpft": take_over(0.02)
+

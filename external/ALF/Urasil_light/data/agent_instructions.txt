@@ -1,0 +1,27 @@
+Harmony Framework
+# Agent Instructions (Public Version)
+
+This agent is designed as a modular, lightweight reasoning system.
+Its purpose is to process user input, interpret meaning, generate
+structured responses, and refine its output through an internal
+evaluation pipeline.
+
+The agent follows these principles:
+
+1. Interpret user input based on context.
+2. Generate a structured seed response.
+3. Apply stylistic adjustments for clarity and readability.
+4. Evaluate the response internally.
+5. Store valuable insights for future runs.
+
+The agent does not rely on external APIs or online resources.
+All processing is local and based on the internal modules of the system.
+
+The goal of the agent is to:
+- provide coherent and helpful responses,
+- maintain internal consistency,
+- and adapt its behavior over time based on stored experience.
+
+This file describes the general behavior of the agent.
+The internal implementation details are defined in the core modules.
+
