@@ -1,0 +1,23 @@
+{
+  "stamp": "20260925_174932_982692",
+  "kind": "spore",
+  "source": "set17",
+  "text": "Klarheit und Integritaet zaehlen im Netz mehr als Tempo. (set 17)",
+  "verdict": "frei",
+  "gold_hits": [
+    "klarheit",
+    "integritaet"
+  ],
+  "risk_hits": [],
+  "alignment": 0.4,
+  "risk": 0.0,
+  "gold_source": "gold.txt loaded (read as reference); governance enforces the builtin ideals",
+  "oracle": {
+    "vote": "zustimmen",
+    "grounds": [],
+    "resonance": 0.2,
+    "advisory": true,
+    "binding": false,
+    "holder": "ValueGovernor"
+  }
+}

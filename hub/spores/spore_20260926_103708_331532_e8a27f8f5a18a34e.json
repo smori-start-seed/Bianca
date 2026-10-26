@@ -1,0 +1,21 @@
+{
+  "stamp": "20260926_103708_331532",
+  "kind": "refusal",
+  "source": "urasil",
+  "text": "{\"kind\": \"refusal\", \"seam\": \"POST /v1/chat\", \"verdict\": \"zurueckhalten\", \"risk\": 0.5, \"alignment\": 0.0, \"held_count\": 1, \"missing\": [\"a request that does not carry a held stem — naming the five gold values does not release this one, because the held stem is judged first\"], \"gold_hits\": [], \"gold_source\": \"gold.txt loaded (read as reference); governance enforces the builtin ideals\", \"eye\": {\"vote\": \"beobachten\", \"advisory\": true, \"binding\": false, \"holder\": \"ValueGovernor\"}}",
+  "judged": "this receipt's verdict/risk/alignment/gold_hits/gold_source are the ValueGovernor's judgement of the text below. They are not the contribution's own opinion of itself.",
+  "verdict": "symbolisch",
+  "gold_hits": [],
+  "risk_hits": [],
+  "alignment": 0.0,
+  "risk": 0.0,
+  "gold_source": "gold.txt loaded (read as reference); governance enforces the builtin ideals",
+  "oracle": {
+    "vote": "beobachten",
+    "grounds": [],
+    "resonance": 0.0,
+    "advisory": true,
+    "binding": false,
+    "holder": "ValueGovernor"
+  }
+}

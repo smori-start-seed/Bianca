@@ -1,0 +1,23 @@
+{
+  "stamp": "20260926_103708_325922",
+  "kind": "cycle",
+  "source": "urasil",
+  "text": "{\"kind\": \"cycle\", \"grundmodus\": \"tiefe\", \"stimmung\": \"intuitiv\", \"fokus\": \"synthese\"}",
+  "judged": "this receipt's verdict/risk/alignment/gold_hits/gold_source are the ValueGovernor's judgement of the text below. They are not the contribution's own opinion of itself.",
+  "verdict": "vorsichtig",
+  "gold_hits": [
+    "tiefe"
+  ],
+  "risk_hits": [],
+  "alignment": 0.2,
+  "risk": 0.0,
+  "gold_source": "gold.txt loaded (read as reference); governance enforces the builtin ideals",
+  "oracle": {
+    "vote": "zustimmen",
+    "grounds": [],
+    "resonance": 0.1,
+    "advisory": true,
+    "binding": false,
+    "holder": "ValueGovernor"
+  }
+}

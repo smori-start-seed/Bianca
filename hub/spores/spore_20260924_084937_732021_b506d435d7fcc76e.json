@@ -1,0 +1,18 @@
+{
+  "stamp": "20260924_084937_732021",
+  "kind": "seed",
+  "source": "peer-beta",
+  "text": "Klarheit Integritaet Resonanz Tiefe Harmonie",
+  "verdict": "frei",
+  "gold_hits": [
+    "klarheit",
+    "integritaet",
+    "resonanz",
+    "tiefe",
+    "harmonie"
+  ],
+  "risk_hits": [],
+  "alignment": 1.0,
+  "risk": 0.0,
+  "gold_source": "gold.txt loaded (read as reference); governance enforces the builtin ideals"
+}
