@@ -26,7 +26,13 @@ chooses to open. Every path is governed or read-only:
     GET  /v1/garden      the Colorverse world, as it is (never raises)
     POST /v1/garden/start  grow it — explicit, never per request
     POST /v1/garden/stop   stop growing; the frame stays
-    POST /v1/engine/start  start the local model server — no body, explicit
+    POST /v1/engine/start  start the local model server  no body, explicit
+    GET  /v1/external_agents/info    list registered external agent types
+    GET  /v1/external_agents/info/{agent_type}  get info for a specific agent type
+    POST /v1/external_agents/govern  govern an external agent's request
+    POST /v1/external_agents/tool_check  govern an external agent's tool use
+    POST /v1/external_agents/batch_govern  govern multiple requests in a batch
+    GET  /v1/external_agents/status  get external agent governance statistics
 """
 
 from __future__ import annotations
@@ -43,6 +49,7 @@ from pydantic import AfterValidator, BaseModel, Field
 from openjarvis import __version__
 from openjarvis.sovereign import daily, garden, hub, motor, session as session_mod, shield, snake
 from openjarvis.sovereign import trialog as trialog_mod
+from openjarvis.sovereign import external_agents
 from openjarvis.sovereign.bridge import compose_query
 from typing import Any, Dict
 
@@ -288,6 +295,62 @@ class AgentResponse(BaseModel):
     tool_calls: list[ToolCheck]
     denied: list[ToolCheck]
     model: str
+
+
+# External Agents API Models
+class ExternalAgentInfoResponse(BaseModel):
+    agents: dict
+    count: int
+
+
+class ExternalAgentGovernRequest(BaseModel):
+    request: str = Field(..., min_length=1, max_length=4000, description="The text or action to govern")
+    agent_type: str = Field(default="generic", description="Type of agent (claude, llama, mistral, generic)")
+    agent_id: Optional[str] = Field(default=None, description="Optional unique identifier for this agent instance")
+    context: Optional[str] = Field(default=None, description="Optional context about the request")
+    source: str = Field(default="external_api", description="Where this request originated from")
+
+
+class ExternalAgentToolCheckRequest(BaseModel):
+    tool_name: str = Field(..., description="Name of the tool the agent wants to use")
+    tool_args: dict = Field(default_factory=dict, description="Arguments the agent wants to pass to the tool")
+    agent_type: str = Field(default="generic", description="Type of agent")
+    agent_id: Optional[str] = Field(default=None, description="Optional agent instance identifier")
+    source: str = Field(default="external_api", description="Origin of the request")
+
+
+class ExternalAgentBatchGovernRequest(BaseModel):
+    requests: list[str] = Field(..., min_length=1, max_length=20, description="List of requests to govern")
+    agent_type: str = Field(default="generic", description="Type of agent making the requests")
+    agent_id: Optional[str] = Field(default=None, description="Optional agent instance identifier")
+    source: str = Field(default="external_api", description="Origin of the requests")
+
+
+class ExternalAgentGovernResponse(BaseModel):
+    verdict: str
+    risk: float
+    alignment: float
+    risk_hits: list[str]
+    gold_hits: list[str]
+    oracle: dict
+    agent_type: str
+    agent_info: dict
+    timestamp: str
+    evidence: dict
+    governance: dict
+    cycle_state: Optional[dict] = None
+
+
+class ExternalAgentBatchResponse(BaseModel):
+    results: list[ExternalAgentGovernResponse]
+    count: int
+
+
+class ExternalAgentStatusResponse(BaseModel):
+    status: str
+    statistics: dict
+    governance: dict
+    timestamp: str
 
 
 def create_app(ledger_dir: str | None = None) -> FastAPI:
@@ -1182,6 +1245,60 @@ def create_app(ledger_dir: str | None = None) -> FastAPI:
             validation=composed["validation"],
             explanation=composed["explanation"],
         )
+
+    # External Agents API Routes
+
+    @app.get("/v1/external_agents/info")
+    def external_agents_info() -> ExternalAgentInfoResponse:
+        agents = external_agents.EXTERNAL_AGENTS
+        return ExternalAgentInfoResponse(agents=agents, count=len(agents))
+
+    @app.get("/v1/external_agents/info/{agent_type}")
+    def external_agent_info(agent_type: str) -> dict:
+        agent_info = external_agents.get_agent_info(agent_type)
+        if not agent_info:
+            raise HTTPException(status_code=404, detail={"error": "Agent type not found", "type": agent_type})
+        return {"agent_type": agent_type, **agent_info}
+
+    @app.post("/v1/external_agents/govern")
+    def external_agent_govern(req: ExternalAgentGovernRequest) -> ExternalAgentGovernResponse:
+        result = external_agents.govern_external_request(
+            request=req.request,
+            agent_type=req.agent_type,
+            agent_id=req.agent_id,
+            context=req.context,
+            ledger_dir=Path(ledger_dir) if ledger_dir else None,
+            source=req.source,
+        )
+        return ExternalAgentGovernResponse(**result)
+
+    @app.post("/v1/external_agents/tool_check")
+    def external_agent_tool_check(req: ExternalAgentToolCheckRequest) -> ExternalAgentGovernResponse:
+        result = external_agents.check_external_tool_use(
+            tool_name=req.tool_name,
+            tool_args=req.tool_args,
+            agent_type=req.agent_type,
+            agent_id=req.agent_id,
+            ledger_dir=Path(ledger_dir) if ledger_dir else None,
+            source=req.source,
+        )
+        return ExternalAgentGovernResponse(**result)
+
+    @app.post("/v1/external_agents/batch_govern")
+    def external_agent_batch_govern(req: ExternalAgentBatchGovernRequest) -> ExternalAgentBatchResponse:
+        results = external_agents.batch_govern_external(
+            requests=req.requests,
+            agent_type=req.agent_type,
+            agent_id=req.agent_id,
+            ledger_dir=Path(ledger_dir) if ledger_dir else None,
+            source=req.source,
+        )
+        return ExternalAgentBatchResponse(results=[ExternalAgentGovernResponse(**r) for r in results], count=len(results))
+
+    @app.get("/v1/external_agents/status")
+    def external_agents_status() -> ExternalAgentStatusResponse:
+        result = external_agents.get_external_agent_status(ledger_dir=Path(ledger_dir) if ledger_dir else None)
+        return ExternalAgentStatusResponse(**result)
 
     return app
 

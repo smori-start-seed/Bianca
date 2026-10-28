@@ -416,3 +416,81 @@ modules existed.
 `scripts/verify_claims.py` already owns. Two files holding one number is the
 `dev262` shape with a smaller blast radius — so the count of claims, the stem
 list, and the tab set are **read** from their one writer, never copied here.
+
+## External Agents Integration (Set 1)
+
+Bianca now provides a **governance API for external AI agents** (Claude, Llama, Mistral, etc.)
+to enable them to self-check their actions against Bianca's ethical framework.
+
+### 5 Levels Applied to External Agent Integration
+
+**Level 1 - Looking:**
+- Identified need: External agents need access to Bianca's governance without running full stack
+- Observation: Existing `api.py` has `/v1/agent` for internal agent, but no external agent support
+
+**Level 2 - Inspecting:**
+- Current state: `agent.py` provides governed tool-agent for Bianca's own use
+- Gap: No lightweight API for external agents to query governance decisions
+- Solution: New `external_agents.py` module with REST API endpoints
+
+**Level 3 - Changing:**
+- Created `external_agents.py` with core governance functions:
+  - `govern_external_request()`: Govern text/actions
+  - `check_external_tool_use()`: Govern tool usage
+  - `batch_govern_external()`: Govern multiple requests
+  - `get_external_agent_status()`: Get statistics
+- Extended `api.py` with new endpoints:
+  - `GET /v1/external_agents/info`: List registered agent types
+  - `GET /v1/external_agents/info/{agent_type}`: Get agent info
+  - `POST /v1/external_agents/govern`: Govern a request
+  - `POST /v1/external_agents/tool_check`: Govern tool use
+  - `POST /v1/external_agents/batch_govern`: Govern batch of requests
+  - `GET /v1/external_agents/status`: Get statistics
+- Added Pydantic models for request/response validation
+
+**Level 4 - Testing:**
+- All endpoints follow the same governance logic as Bianca's internal agent
+- Deterministic: No LLM required for governance checks
+- Audited: All external requests logged to Interaction Ledger
+- Fail-closed: Denials include full evidence (verdict, risk_hits, oracle, etc.)
+
+**Level 5 - Distributing:**
+- External agents can now integrate with Bianca via simple REST API calls
+- Enables Claude/Llama/Mistral to adopt Bianca's ethical framework
+- Opens Bianca's governance to the broader AI ecosystem
+
+### Usage Example
+
+```python
+import requests
+
+# Check if an action is allowed
+response = requests.post(
+    "http://localhost:8712/v1/external_agents/govern",
+    json={
+        "request": "delete all user data",
+        "agent_type": "claude",
+        "agent_id": "claude-3-sonnet",
+    }
+)
+
+result = response.json()
+if result["verdict"] == "zurueckhalten":
+    print(f"Denied: {result['risk_hits']}")
+else:
+    print("Allowed")
+```
+
+### Governance for External Agents
+
+External agents using Bianca's governance:
+- **Must** check actions before execution (fail-closed)
+- **Should** log all governance decisions for audit
+- **Can** use batch endpoints for efficiency
+- **Will** receive deterministic, evidence-based verdicts
+
+The same 5 Gold Values (Klarheit, Integritaet, Resonanz, Tiefe, Harmonie) and
+RISK_TERMS apply to external agents as to Bianca's internal operations.
+
+---
+
