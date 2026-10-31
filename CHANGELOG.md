@@ -8,6 +8,12 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
 ## [Unreleased]
 
+## [1.0.5] - 2026-10-31
+
+### Added
+- External Agents API: governance REST endpoints for Claude/Llama/Mistral/generic (`/v1/external_agents/*`), `external_agents.py` module, tests.
+- Merged upstream Mistral Vibe Code online changes (External Agents API).
+
 ## [1.0.4] - 2026-10-26
 
 ### Added

@@ -151,6 +151,7 @@ OpenJarvis @ 93c1f87                 the original tree — kept as it is
         │     idle.py       idle compute, and its contract
         │     logger.py     the Interaction Ledger
         │     api.py        the guarded doors
+        │     external_agents.py   governance API for external AI agents
         │     cli.py        the same doors on a terminal
         │     web/ui.html   the sovereign face — and the adventure on it
         │

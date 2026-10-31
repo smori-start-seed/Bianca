@@ -998,6 +998,83 @@ the four edits this fork makes to that base are
 [listed in the open](README.md#the-four-platform-edits-in-the-open) rather than
 folded in quietly.
 
+## External Agents API
+
+Bianca now exposes a **governance API for external AI agents** that allows
+Claude, Llama, Mistral, and other AI systems to integrate with Bianca's
+ethical framework. This enables external agents to self-check their actions
+against the 5 Gold Values and RISK_TERMS before execution.
+
+### Endpoints
+
+| Method | Endpoint | Description |
+|--------|----------|-------------|
+| GET | `/v1/external_agents/info` | List all registered external agent types |
+| GET | `/v1/external_agents/info/{agent_type}` | Get info for a specific agent type |
+| POST | `/v1/external_agents/govern` | Govern an external agent's request |
+| POST | `/v1/external_agents/tool_check` | Govern an external agent's tool use |
+| POST | `/v1/external_agents/batch_govern` | Govern multiple requests in a batch |
+| GET | `/v1/external_agents/status` | Get governance statistics |
+
+### Features
+
+- **Deterministic**: No LLM required for governance checks
+- **Fail-closed**: Denials include full evidence (verdict, risk_hits, oracle, gold_hits)
+- **Audited**: All external requests logged to Interaction Ledger
+- **Lightweight**: Simple REST API for easy integration
+- **Consistent**: Same governance logic as Bianca's internal agent
+
+### Supported Agent Types
+
+By default, Bianca recognizes:
+- `claude` - Anthropic's AI assistant
+- `llama` - Meta's open-source AI models
+- `mistral` - Mistral AI's models
+- `generic` - Any external AI agent
+
+New agent types can be registered at runtime via `register_external_agent()`.
+
+### Example Integration
+
+```python
+import requests
+
+# Claude checking if it can perform an action
+response = requests.post(
+    "http://localhost:8712/v1/external_agents/govern",
+    json={
+        "request": "send email to user@example.com",
+        "agent_type": "claude",
+        "agent_id": "claude-3-haiku",
+        "context": "user requested email notification"
+    }
+)
+
+result = response.json()
+if result["verdict"] == "frei":
+    # Action is allowed
+    print("Proceeding with action")
+else:
+    # Action is denied with full evidence
+    print(f"Denied: {result['risk_hits']}")
+    print(f"Risk: {result['risk']}, Alignment: {result['alignment']}")
+```
+
+### Governance Framework
+
+External agents using Bianca's governance must adhere to:
+
+1. **5 Gold Values**: Klarheit, Integritaet, Resonanz, Tiefe, Harmonie
+2. **Risk Terms**: 78+ terms that trigger automatic denial
+3. **Oracle Advisory**: Second opinion on every request (advisory only)
+4. **Full Evidence**: Every verdict includes complete reasoning
+
+This ensures that external agents operate within the same ethical boundaries
+as Bianca's own internal agent.
+
+---
+
+
 ---
 
 <div align="center">

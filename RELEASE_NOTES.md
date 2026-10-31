@@ -1,4 +1,4 @@
-# Bianca v1.0.4 — Release Notes
+# Bianca v1.0.5 — Release Notes
 
 Bianca is a sovereign fork of OpenJarvis: a modular AI assistant backend with
 composable intelligence primitives and a value-governed overlay
@@ -6,6 +6,7 @@ composable intelligence primitives and a value-governed overlay
 
 ## Highlights
 
+- External Agents API: governance REST endpoints for Claude/Llama/Mistral/generic agents (`/v1/external_agents/*`), plus `external_agents.py` module and tests.
 - ValueGovernor governance: only `zurueckhalten` denies; `frei` needs >= 2 real
   German gold words; English can neither launder a denial nor buy affirmation;
   hook failure = denial (fail-closed); `gold_source` on every verdict.
