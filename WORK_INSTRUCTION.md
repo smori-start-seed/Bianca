@@ -492,5 +492,26 @@ External agents using Bianca's governance:
 The same 5 Gold Values (Klarheit, Integritaet, Resonanz, Tiefe, Harmonie) and
 RISK_TERMS apply to external agents as to Bianca's internal operations.
 
+
+
+## Five Levels Iteration Notes
+
+The latest iteration (Set 1) has been added to `five-levels-notes.md`.
+This document follows the **5 Levels of Finishing** doctrine:
+
+1. **Look** - Initial observation
+2. **Inspect** - Detailed analysis
+3. **Conclude** - Derive the solution
+4. **Change** - Implement the fix
+5. **Test** - Verify it works
+6. **Distribute** - Share with the world
+
+**Current Sets:**
+- **Set 1** (28.10.2026): External Agents API Integration
+- **Sets 2-40**: Colorverse Kernel Development (from ALF)
+
+For full details, see `five-levels-notes.md`.
+
 ---
 
+---

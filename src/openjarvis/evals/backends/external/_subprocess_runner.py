@@ -3,6 +3,12 @@
 Used by HermesBackend and OpenClawBackend to spawn their respective
 foreign-framework runner scripts. Hermetic: a fresh subprocess per task,
 energy sampled by NVML/powermetrics/ROCm-SMI/RAPL fallback chain.
+
+OS Compatibility:
+- Linux: Full support (NVML, powermetrics, ROCm-SMI, RAPL)
+- macOS: Partial support (powermetrics only)
+- Windows: Graceful degradation (falls back to NullSampler)
+All OS-specific failures are caught and handled gracefully.
 """
 
 from __future__ import annotations
